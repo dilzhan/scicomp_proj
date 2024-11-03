@@ -5,9 +5,9 @@ from scipy.stats import qmc, truncnorm, norm
 import time
 
 def f(x):
-    return np.min([2 * x**2 + 2 * a**2 + 1 + 2 * x * a for a in [-1, 0, 1]])
+    return np.min([2 * x**2 + 2 * a**2 + 1 + 2 * x * a for a in act_arr])
 
-def f_dt(x, model, ran_arr, act_arr = [-1, 0, 1]):
+def f_dt(x, model, ran_arr):
     return np.min([x**2 + a**2 + np.mean([model.predict([[x + a + xi]])[0] for xi in ran_arr]) for a in act_arr])
 
 def c(x, a):
@@ -21,9 +21,10 @@ def sobol_normal(n, dim=1, seed = 47):
     return normal_sample.ravel()
 
 T = 1
-N = 32
+N = int(input())
 x0 = 1
-act_arr = [-1, 0, 1]
+delta = float(input())
+act_arr = np.arange(-1, 1.01, delta)
 ran_arr = sobol_normal(N)
 V = {}
 
@@ -50,6 +51,10 @@ for t in range(T, -1, -1):
 
 end = time.time()
 
+print(f'N = {N}')
+print(f'delta = {delta}')
+print(f'action array = {act_arr}')
+print()
 print(f'Time for Training the Predictors: {end - start} s.')
 
 X = np.arange(-3, 3, 0.05)
@@ -61,8 +66,8 @@ plt.plot(X, y_true, label = 'true function')
 plt.legend()
 plt.xlabel(f'$x_0$')
 plt.ylabel(f'$V(0, x_0)$')
-plt.title(f'Value function at time $t=0$ for $T=1$')
-plt.savefig('Value Function Graph.png')
+plt.title(f'Value function at time $t=0$ for $T=1$(delta={delta}, N={N})')
+plt.savefig(f'Value Function Graph(N={N}, delta={delta}).png')
 
 for x0 in [0, 1, 2]:
     pred = park[0].predict([[x0]])[0]

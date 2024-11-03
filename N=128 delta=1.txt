@@ -1,0 +1,23 @@
+N = 128
+delta = 1.0
+action array = [-1.  0.  1.]
+
+Time for Training the Predictors: 3.520263910293579 s.
+x_0=0
+Prediction: 0.9914162777007821
+True answer: 1.0
+Absolute Error: 0.008583722299217889
+Relative Errpr: 0.008583722299217889
+
+x_0=1
+Prediction: 2.984161683731603
+True answer: 3.0
+Absolute Error: 0.015838316268396824
+Relative Errpr: 0.005279438756132275
+
+x_0=2
+Prediction: 7.001268306054666
+True answer: 7.0
+Absolute Error: 0.0012683060546656577
+Relative Errpr: 0.0001811865792379511
+

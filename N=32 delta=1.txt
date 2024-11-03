@@ -1,19 +1,23 @@
-Time for Training the Predictors: 0.22763633728027344 s.
+N = 32
+delta = 1.0
+action array = [-1.  0.  1.]
+
+Time for Training the Predictors: 0.21124577522277832 s.
 x_0=0
 Prediction: 0.9209555378463544
-True answer: 1
+True answer: 1.0
 Absolute Error: 0.07904446215364558
 Relative Errpr: 0.07904446215364558
 
 x_0=1
 Prediction: 2.945909316142827
-True answer: 3
+True answer: 3.0
 Absolute Error: 0.05409068385717308
 Relative Errpr: 0.018030227952391027
 
 x_0=2
 Prediction: 7.030379979183675
-True answer: 7
+True answer: 7.0
 Absolute Error: 0.03037997918367541
 Relative Errpr: 0.004339997026239344
 
